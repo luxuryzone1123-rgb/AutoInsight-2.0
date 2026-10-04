@@ -2,6 +2,7 @@ import os
 from crewai import Agent, LLM
 from tools import profile_csv_dataset, create_pdf_report
 
+
 def get_llm():
     groq_key = os.environ.get("GROQ_API_KEY")
 
@@ -10,11 +11,12 @@ def get_llm():
             "GROQ_API_KEY is missing! Set it in Streamlit Secrets."
         )
 
-   return LLM(
+    return LLM(
         model="groq/openai/gpt-oss-120b",
         api_key=groq_key
     )
-    )
+
+
 def create_manager_agent():
     return Agent(
         role="Data Strategy Director",
@@ -24,6 +26,7 @@ def create_manager_agent():
         verbose=True,
         allow_delegation=False
     )
+
 
 def create_analyst_agent():
     return Agent(
@@ -35,6 +38,7 @@ def create_analyst_agent():
         verbose=True,
         allow_delegation=False
     )
+
 
 def create_reporter_agent():
     return Agent(

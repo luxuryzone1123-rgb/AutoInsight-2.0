@@ -11,7 +11,7 @@ def get_llm():
         )
 
     return LLM(
-        model="gpt-oss-120b",
+        model="llama-3.3-70b-versatile",  # Yahan gpt-oss-120b ki jagah yeh valid model likhein
         api_key=groq_key,
         base_url="https://api.groq.com/openai/v1",
         custom_openai=True

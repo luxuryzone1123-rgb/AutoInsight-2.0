@@ -1,17 +1,21 @@
 import os
 from crewai import Agent, LLM
 from tools import profile_csv_dataset, create_pdf_report
-
 def get_llm():
     groq_key = os.environ.get("GROQ_API_KEY")
+
     if not groq_key:
-        raise ValueError("GROQ_API_KEY is missing! Set it in Streamlit Secrets or environment variables.")
-    
+        raise ValueError(
+            "GROQ_API_KEY is missing! Set it in Streamlit Secrets."
+        )
+
     return LLM(
-        model="groq/openai/gpt-oss-120b",
+        model="openai/gpt-oss-120b",
         api_key=groq_key,
-        base_url="https://api.groq.com/openai/v1"
+        base_url="https://api.groq.com/openai/v1",
+        custom_openai=True
     )
+
 
 def create_manager_agent():
     return Agent(

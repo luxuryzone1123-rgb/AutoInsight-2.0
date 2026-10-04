@@ -1,5 +1,5 @@
 streamlit>=1.32.0
 pandas>=2.0.0
-crewai>=0.100.0
+crewai>=0.100.1
 fpdf2>=2.7.8
 

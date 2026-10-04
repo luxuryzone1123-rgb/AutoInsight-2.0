@@ -2,6 +2,13 @@ import os
 from crewai import Agent, LLM
 from tools import profile_csv_dataset, create_pdf_report
 
+# Fix for CrewAI + Groq cache_breakpoint bug
+try:
+    import crewai.llms.cache as crew_cache
+    crew_cache.mark_cache_breakpoint = lambda msg: msg
+except Exception:
+    pass
+
 def get_llm():
     groq_key = os.environ.get("GROQ_API_KEY")
 

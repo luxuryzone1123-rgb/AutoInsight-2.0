@@ -10,9 +10,10 @@ def get_llm():
             "GROQ_API_KEY is missing! Set it in Streamlit Secrets."
         )
 
-    return LLM(
-        model="groq/llama-3.3-70b-versatile",
+   return LLM(
+        model="groq/openai/gpt-oss-120b",
         api_key=groq_key
+    )
     )
 def create_manager_agent():
     return Agent(

@@ -11,10 +11,8 @@ def get_llm():
         )
 
     return LLM(
-        model="llama-3.3-70b-versatile",
-        api_key=groq_key,
-        base_url="https://api.groq.com/openai/v1",
-        custom_openai=True
+        model="groq/llama-3.3-70b-versatile",
+        api_key=groq_key
     )
 def create_manager_agent():
     return Agent(

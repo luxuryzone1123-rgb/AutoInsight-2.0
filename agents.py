@@ -11,8 +11,9 @@ def get_llm():
         )
 
     return LLM(
-        model="groq/llama-3.3-70b-versatile",  # 'groq/' prefix lagana zaroori hai
-        api_key=groq_key
+        model="groq/llama-3.3-70b-versatile",
+        api_key=groq_key,
+        temperature=0
     )
 
 def create_manager_agent():

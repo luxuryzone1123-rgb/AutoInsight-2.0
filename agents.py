@@ -1,6 +1,7 @@
 import os
 from crewai import Agent, LLM
 from tools import profile_csv_dataset, create_pdf_report
+
 def get_llm():
     groq_key = os.environ.get("GROQ_API_KEY")
 
@@ -10,12 +11,11 @@ def get_llm():
         )
 
     return LLM(
-        model="openai/gpt-oss-120b",
+        model="gpt-oss-120b",
         api_key=groq_key,
         base_url="https://api.groq.com/openai/v1",
         custom_openai=True
     )
-
 
 def create_manager_agent():
     return Agent(

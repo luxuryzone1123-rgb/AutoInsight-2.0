@@ -2,17 +2,20 @@ import os
 from crewai import Agent, LLM
 from tools import profile_csv_dataset, create_pdf_report
 
-import os
-from crewai import Agent, LLM
-from tools import profile_csv_dataset, create_pdf_report
+def get_llm():
+    groq_key = os.environ.get("GROQ_API_KEY")
 
-# Fix for CrewAI + Groq cache_breakpoint bug
-try:
-    import crewai.llms.cache as crew_cache
-    crew_cache.mark_cache_breakpoint = lambda msg: msg
-except Exception:
-    pass
+    if not groq_key:
+        raise ValueError(
+            "GROQ_API_KEY is missing! Set it in Streamlit Secrets."
+        )
 
+    return LLM(
+        model="llama-3.3-70b-versatile",
+        api_key=groq_key,
+        base_url="https://api.groq.com/openai/v1",
+        custom_openai=True
+    )
 def create_manager_agent():
     return Agent(
         role="Data Strategy Director",

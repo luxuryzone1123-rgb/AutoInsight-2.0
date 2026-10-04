@@ -1,5 +1,6 @@
 import sys
 import os
+import importlib.metadata as md
 
 # Fix import paths for Streamlit Cloud execution
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -24,6 +25,7 @@ init_db()
 
 # Sidebar Navigation & Authentication
 st.sidebar.title("🤖 AutoInsight AI")
+st.sidebar.caption(f"crewai {md.version('crewai')}")
 
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False

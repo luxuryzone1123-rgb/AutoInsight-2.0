@@ -8,7 +8,7 @@ def get_llm():
         raise ValueError("GROQ_API_KEY is missing! Set it in Streamlit Secrets or environment variables.")
     
     return LLM(
-        model="openai/gpt-oss-120b",
+        model="groq/openai/gpt-oss-120b",
         api_key=groq_key,
         base_url="https://api.groq.com/openai/v1"
     )
